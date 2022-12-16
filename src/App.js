@@ -1,23 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, useState } from 'react';
+import './App.css'
+import Loading from './components/Loading';
+import { generate } from './utils/words';
+import useKeyPress from './hooks/useKeyPress';
 
-function App() {
+const Spline = React.lazy(() => import('@splinetool/react-spline'));
+const initialWords = generate()
+
+const App = () => {
+
+  /* Agrego padding para que el texto siempre este centrado */
+
+  const [leftPadding, setLeftPadding] = useState(
+    new Array(20).fill(' ').join(''),
+  );
+  const [outgoingChars, setOutgoingChars] = useState('');
+  const [currentChar, setCurrentChar] = useState(initialWords.charAt(0));
+  const [incomingChars, setIncomingChars] = useState(initialWords.substr(1));
+
+  /*  */
+  useKeyPress(key => {
+
+    let updatedOutgoingChars = outgoingChars;
+    let updatedIncomingChars = incomingChars;
+
+
+    if (key === currentChar) {
+
+      if (leftPadding.length > 0) {
+        setLeftPadding(leftPadding.substring(1));
+      }
+
+      updatedOutgoingChars += currentChar;
+      setOutgoingChars(updatedOutgoingChars);
+
+      setCurrentChar(incomingChars.charAt(0));
+
+      updatedIncomingChars = incomingChars.substring(1);
+      if (updatedIncomingChars.split(' ').length < 10) {
+        updatedIncomingChars += ' ' + generate();
+      }
+      setIncomingChars(updatedIncomingChars);
+    }
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <div>
+
+      <div className='container'>
+        <p className="Character">
+          <span className="Character-out">
+            {(leftPadding + outgoingChars).slice(-20)}
+          </span>
+          <span className="Character-current">{currentChar}</span>
+          <span>{incomingChars.substr(0, 20)}</span>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
+
+
+      <div className='escena'>
+        <Suspense fallback={<Loading></Loading>}>
+          <Spline scene="https://prod.spline.design/jgGPiQ7IJUDNBQSz/scene.splinecode" height={'700px'} />
+        </Suspense>
+      </div>
     </div>
   );
 }
