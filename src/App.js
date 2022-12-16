@@ -1,13 +1,16 @@
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css'
 import Loading from './components/Loading';
 import { generate } from './utils/words';
 import useKeyPress from './hooks/useKeyPress';
+import Spline from '@splinetool/react-spline';
 
-const Spline = React.lazy(() => import('@splinetool/react-spline'));
+
+
 const initialWords = generate()
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
 
   /* Agrego padding para que el texto siempre este centrado */
 
@@ -18,7 +21,8 @@ const App = () => {
   const [currentChar, setCurrentChar] = useState(initialWords.charAt(0));
   const [incomingChars, setIncomingChars] = useState(initialWords.substr(1));
 
-  /*  */
+  /* Detecto KEY y agrego logica */
+
   useKeyPress(key => {
 
     let updatedOutgoingChars = outgoingChars;
@@ -44,6 +48,7 @@ const App = () => {
     }
   });
 
+  console.log(loading)
   return (
     <div>
 
@@ -61,9 +66,12 @@ const App = () => {
 
 
       <div className='escena'>
-        <Suspense fallback={<Loading></Loading>}>
-          <Spline scene="https://prod.spline.design/jgGPiQ7IJUDNBQSz/scene.splinecode" height={'700px'} />
-        </Suspense>
+        <div>
+          <Spline scene="https://prod.spline.design/jgGPiQ7IJUDNBQSz/scene.splinecode" height={'700px'} onLoad={() => setLoading(false)} />
+          {loading && (
+            <Loading />
+          )}
+        </div>
       </div>
     </div>
   );
