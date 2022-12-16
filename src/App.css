@@ -1,4 +1,10 @@
 
+
+@font-face {
+  font-family: 'Rajdhani';
+  src: local('Rajdhani'), url(./font/Minecraft.ttf) format('truetype');
+}
+
 * {
   background-color: #b5d4e2 !important;
 }
@@ -10,12 +16,20 @@
 
 .Character {
   white-space: pre;
+  font-size: 30px;
+  font-family: Rajdhani;
 }
 
 .Character-current {
-  background-color: #d309a7;
+  background-color: #1d09d3;
+  color: green;
 }
 
 .Character-out {
   color: silver;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
 }

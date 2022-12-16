@@ -48,13 +48,15 @@ const App = () => {
     <div>
 
       <div className='container'>
-        <p className="Character">
-          <span className="Character-out">
-            {(leftPadding + outgoingChars).slice(-20)}
-          </span>
-          <span className="Character-current">{currentChar}</span>
-          <span>{incomingChars.substr(0, 20)}</span>
-        </p>
+        <div className='center'>
+          <p className="Character">
+            <span className="Character-out">
+              {(leftPadding + outgoingChars).slice(-20)}
+            </span>
+            <span className="Character-current">{currentChar}</span>
+            <span>{incomingChars.substr(0, 20)}</span>
+          </p>
+        </div>
       </div>
 
 
