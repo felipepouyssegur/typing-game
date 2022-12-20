@@ -5,6 +5,11 @@
   src: local('Rajdhani'), url(./font/Minecraft.ttf) format('truetype');
 }
 
+html{
+  cursor: url('./assets/cursor.png'), pointer;
+  overflow-y: hidden;
+}
+
 * {
   background-color: #b5d4e2 !important;
 }
@@ -39,7 +44,7 @@
 .wpm{
   display: flex;
   justify-content: center;
-  margin-right: 200px;
+  margin-right: 150px;
   font-family: Rajdhani;
   font-size: 30px;
 }
@@ -50,7 +55,7 @@
 .accuracy {
   display: flex;
   justify-content: center;
-  margin-left: 200px;
+  margin-left: 150px;
   font-family: Rajdhani;
   font-size: 30px;
 }
