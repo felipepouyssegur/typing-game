@@ -29,6 +29,32 @@
   justify-content: center;
 }
 
+/* wpm */
+
+.stats{
+  display: flex;
+  justify-content: center;
+}
+
+.wpm{
+  display: flex;
+  justify-content: center;
+  margin-right: 200px;
+  font-family: Rajdhani;
+  font-size: 30px;
+}
+
+
+/* accuracy */
+
+.accuracy {
+  display: flex;
+  justify-content: center;
+  margin-left: 200px;
+  font-family: Rajdhani;
+  font-size: 30px;
+}
+
 /* escena */
 
 .escena{
