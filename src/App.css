@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Rajdhani';
-  src: local('Rajdhani'), url(./font/Minecraft.ttf) format('truetype');
+  src: local('Rajdhani'), url(./font/font.otf) format('opentype');
 }
 
 html{
