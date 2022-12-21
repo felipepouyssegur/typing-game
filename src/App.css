@@ -46,7 +46,7 @@ html{
   justify-content: center;
   margin-right: 150px;
   font-family: Rajdhani;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 
@@ -57,7 +57,7 @@ html{
   justify-content: center;
   margin-left: 150px;
   font-family: Rajdhani;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 /* escena */
@@ -87,4 +87,39 @@ html{
 
 .caps{
   color: #bf918b;
+}
+
+.component{
+  height: 600px !important;
+}
+
+/* resposive */
+
+@media (max-height: 845px) {
+  .Character{
+    font-size: 22px !important;
+  }
+  .wpmm{
+    font-size: 18px !important;
+  }
+  .acc{
+    font-size: 18px !important;
+  }
+}
+
+
+/* footer */
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  font-family: Rajdhani;
+}
+
+.footer a{
+  text-decoration: none;
+  color: black;
+  cursor: url('./assets/cursor.png'), pointer;
 }

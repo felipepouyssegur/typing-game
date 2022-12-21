@@ -5,7 +5,7 @@ import { generate } from './utils/words';
 import useKeyPress from './hooks/useKeyPress';
 import Spline from '@splinetool/react-spline';
 import { currentTime } from './utils/time';
-
+import Footer from './components/Footer';
 
 
 const initialWords = generate()
@@ -103,10 +103,10 @@ const App = () => {
         </div>
         <div className='stats'>
           <div className='wpm'>
-            <h3 title='Words Per Minute'>WPM: {wpm}</h3>
+            <h3 title='Words Per Minute' className='wpmm'>WPM: {wpm}</h3>
           </div>
           <div className='accuracy'>
-            <h3>ACCURACY: {accuracy}</h3>
+            <h3 className='acc'>ACCURACY: {accuracy}</h3>
           </div>
         </div>
       </div>
@@ -114,13 +114,16 @@ const App = () => {
 
       <div className='escena'>
         <div>
-          <Spline scene="https://prod.spline.design/jgGPiQ7IJUDNBQSz/scene.splinecode" height={'700px'} onLoad={() => setLoading(false)} />
+          <Spline scene="https://prod.spline.design/jgGPiQ7IJUDNBQSz/scene.splinecode" onLoad={() => setLoading(false)} className='component' />
           {loading && (
             <Loading />
           )}
         </div>
       </div>
+      <Footer />
     </div>
+
+
   );
 }
 
